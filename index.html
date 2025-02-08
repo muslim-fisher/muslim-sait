@@ -1,212 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мусульманский сайт</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background: linear-gradient(to bottom, #f0f9ff, #cfe8ff);
-            color: #333;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        
-        header {
-            background-color: #008080;
-            padding: 1em 0;
-            text-align: center;
-            color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .nav-menu {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            background-color: #006666;
-            margin: 0;
-        }
-        
-        .nav-menu li {
-            margin: 0 15px;
-        }
-        
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 10px 15px;
-            display: block;
-            border-radius: 5px;
-        }
-        
-        .nav-menu a:hover {
-            background-color: #009999;
-        }
-        
-        main {
-            padding: 2em;
-            text-align: center;
-            flex-grow: 1;
-        }
-        
-        .section {
-            margin: 2em 0;
-            padding: 2em;
-            background-color: #f0f4f8;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-        
-        button {
-            background-color: #00796b;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s;
-        }
-        
-        button:hover {
-            background-color: #004d40;
-        }
-        
-        footer {
-            background-color: #008080;
-            color: white;
-            text-align: center;
-            padding: 1.5em 0;
-            margin-top: 2em;
-            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            margin-top: 20px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        #theme-toggle {
-            margin-top: 20px;
-        }
-        
-        .dark-theme {
-            background-color: #333;
-            color: #fff;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мусульманский сайт</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: linear-gradient(to bottom, #e0f7fa, #cce7ff);
+      color: #333;
+      line-height: 1.8;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+    }
+  
+    header {
+      background: linear-gradient(135deg, #00796b, #008080);
+      padding: 1.5em 0;
+      text-align: center;
+      color: white;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+  
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      background: #006666;
+      padding: 1em 0;
+      margin: 0;
+    }
+  
+    .nav-menu li {
+      margin: 0 20px;
+    }
+  
+    .nav-menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 12px 18px;
+      display: block;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+  
+    .nav-menu a:hover {
+      background-color: #00cccc;
+      transform: scale(1.05);
+    }
+  
+    main {
+      padding: 3em 2em;
+      text-align: center;
+      flex-grow: 1;
+    }
+  
+    .section {
+      margin: 2.5em 0;
+      padding: 3em;
+      background-color: #f9fcff;
+      border-radius: 20px;
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+      animation: fadeIn 1.3s ease;
+    }
+  
+    .prayer-step {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 2em;
+      margin-bottom: 1.5em;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+  
+    .prayer-step h3 {
+      color: #00796b;
+      font-size: 28px;
+      margin-bottom: 1em;
+    }
+  
+    ol {
+      padding-left: 1.5em;
+      list-style-type: decimal;
+    }
+  
+    ol li {
+      margin-bottom: 1em;
+      color: #333;
+      font-size: 1.1em;
+    }
+  
+    ol li strong {
+      color: #004d40;
+    }
+  
+    ol li em {
+      font-style: italic;
+      color: #00796b;
+    }
+  
+    ol li:hover {
+      background: #e8f8f9;
+      padding: 5px;
+      border-radius: 8px;
+    }
+  
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    button {
+      background: linear-gradient(135deg, #00796b, #004d40);
+      color: white;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+  
+    button:hover {
+      background: #004d40;
+      transform: translateY(-3px);
+    }
+  
+    footer {
+      background: linear-gradient(135deg, #00796b, #008080);
+      color: white;
+      text-align: center;
+      padding: 1.8em 0;
+      margin-top: 2em;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+    }
+  
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      margin-top: 20px;
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+    }
+  
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+  
+    #theme-toggle {
+      margin-top: 20px;
+    }
+  
+    .dark-theme {
+      background-color: #333;
+      color: #f0f0f0;
+    }
+  
+    h1 {
+      color: #004d40;
+      font-size: 36px;
+      margin-bottom: 0.5em;
+    }
+  
+    h2 {
+      text-align: center;
+      color: #006666;
+      font-size: 32px;
+      margin-bottom: 1.5em;
+    }
+  
+    p {
+      font-size: 1.1em;
+      color: #666;
+    }
+  
+    @media (max-width: 600px) {
+      .section {
+        padding: 1.5em;
+      }
+  
+      h2 {
+        font-size: 28px;
+      }
+  
+      .prayer-step h3 {
+        font-size: 24px;
+      }
+    }
+    .lesson-content {
+        display: none;
+        padding: 15px;
+        background: #e8f8f9;
+        border: 2px solid #00cccc;
+        border-radius: 10px;
+        margin-top: 10px;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+  
+      .trigger-word {
+        color: #00796b;
+        cursor: pointer;
+        font-weight: bold;
+        text-decoration: underline;
+      }
+  </style>
+  
+  
 </head>
-
 <body>
-    <header>
-        <nav>
-            <ul class="nav-menu">
-                <li><a href="#home">Главная</a></li>
-                <li><a href="#resources">Духовные ресурсы</a></li>
-                <li><a href="#prayer-times">Время намаза</a></li>
-                <li><a href="#calendar">Календарь событий</a></li>
-                <li><a href="#community">Сообщество</a></li>
-                <li><a href="#profile">Личный кабинет</a></li>
-                <li><a href="muslim-sait.html">Второй сайт</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="#home">Главная</a></li>
+        <li><a href="#resources">Духовные ресурсы</a></li>
+        <li><a href="#prayer-times">Время намаза</a></li>
+        <li><a href="#calendar">Календарь событий</a></li>
+        <li><a href="#community">Сообщество</a></li>
+        <li><a href="#profile">Личный кабинет</a></li>
+        <li><a href="#prayer-lesson">Обучение намазу</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-        <section id="home" class="section">
-            <h1>Добро пожаловать на мусульманский сайт!</h1>
-            <p>Здесь вы найдете ресурсы для духовного развития и общения с единомышленниками.</p>
-            <img src="data:image/jpeg;base64,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" alt="Кааба в Мекке">
-            <button id="theme-toggle">Переключить тему</button>
-        </section>
+  <main>
+    <section id="home" class="section">
+      <h1>Добро пожаловать на мусульманский сайт!</h1>
+      <p>Здесь вы найдете ресурсы для духовного развития и общения с единомышленниками.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Great_Mosque_of_Mecca.jpg/800px-Great_Mosque_of_Mecca.jpg" alt="Кааба в Мекке">
+      <button id="theme-toggle">Переключить тему</button>
+    </section>
 
-        <section id="resources" class="section">
-            <h2>Духовные ресурсы</h2>
-            <ul>
-                <li>Онлайн Коран с переводами и аудио</li>
-                <li>Тафсир и хадисы</li>
-                <li>Статьи о намазе и других столпах ислама</li>
-            </ul>
-        </section>
+    <p>Нажмите на слово <span class="trigger-word" onclick="toggleLesson('lesson1')">"Намаз"</span>, чтобы увидеть урок.</p>
 
-        <section id="prayer-times" class="section">
-            <h2>Время намаза</h2>
-            <p>Автоматическое определение времени намаза по вашему местоположению.</p>
-            <div class="btn-group">
-                <button onclick="getPrayerTimes()">Обновить время намаза</button>
-            </div>
-            <div id="prayer-times-display"></div>
-        </section>
+    <section id="prayer-lesson" class="section">
+        <h2>Обучение Намазу</h2>
+      
+        <div id="lesson1" class="lesson-content">
+          <h3>1 ракаат</h3>
+          <ol>
+            <li><strong>Намерение (Нийят):</strong> Я намериваюсь совершить Утренний намаз фаджр ради Аллаха.</li>
+            <li><strong>Такбир:</strong> Поднимите руки и произнесите «Аллаху Акбар».</li>
+            <li>Чтение суры Аль-Фатиха и других аятов.</li>
+            <li>Сделайте руку (поклон).</li>
+            <li>Вернитесь в стоячее положение.</li>
+            <li>Совершите два земных поклона (суджуд).</li>
+            <li>Завершите молитву таслимом.</li>
+          </ol>
+        </article>
+      
+        <div id="lesson1" class="lesson-content">
+          <h3>2 ракаат</h3>
+          <ol>
+            <li>Чтение суры Аль-Фатиха и других аятов.</li>
+            <li>Сделайте руку (поклон).</li>
+            <li>Вернитесь в стоячее положение <em>(Сами-аллаху лиман хамида)</em>. Когда встали: <em>(Роббана (уа) лякаль-хамд)</em></li>
+            <li>Совершите два земных поклона (суджуд).</li>
+            <li>Завершите молитву таслимом.</li>
+          </ol>
+        </article>
+      
+        <div id="lesson1" class="lesson-content">
+          <h3>3 ракаат</h3>
+          <ol>
+            <li>Чтение суры Аль-Фатиха.</li>
+            <li>Сделайте руку (поклон).</li>
+            <li>Вернитесь в стоячее положение <em>(Сами-аллаху лиман хамида)</em>. Когда встали: <em>(Роббана (уа) лякаль-хамд)</em></li>
+            <li>Совершите два земных поклона (суджуд).</li>
+            <li>Завершите молитву таслимом.</li>
+          </ol>
+        </article>
+      </section>
+      
 
-        <section id="calendar" class="section">
-            <h2>Календарь исламских событий</h2>
-            <div id="calendar-display">Текущая дата: <span id="current-date"></span></div>
-        </section>
+<section id="resources" class="section">
+      <h2>Духовные ресурсы</h2>
+      <ul>
+        <li>Онлайн Коран с переводами и аудио</li>
+        <li>Тафсир и хадисы</li>
+        <li>Статьи о намазе и других столпах ислама</li>
+      </ul>
+    </section>
 
-        <section id="community" class="section">
-            <h2>Сообщество</h2>
-            <p>Присоединяйтесь к обсуждениям и делитесь полезными материалами с другими пользователями.</p>
-            <div class="btn-group">
-                <button onclick="joinCommunity()">Присоединиться к сообществу</button>
-            </div>
-            <div id="community-feedback"></div>
-        </section>
+    <section id="prayer-times" class="section">
+      <h2>Время намаза</h2>
+      <p>Автоматическое определение времени намаза по вашему местоположению.</p>
+      <div class="btn-group">
+        <button onclick="getPrayerTimes()">Обновить время намаза</button>
+      </div>
+      <div id="prayer-times-display"></div>
+    </section>
 
-        <section id="profile" class="section">
-            <h2>Личный кабинет</h2>
-            <p>Настройка уведомлений и ведение дневника духовного роста.</p>
-            <div class="btn-group">
-                <button onclick="logDailyGratitude()">Записать благодарность</button>
-                <button onclick="getIslamicQuote()">Получить исламскую цитату</button>
-                <button onclick="getRandomDua()">Получить дуа</button>
-            </div>
-            <div id="gratitude-log"></div>
-            <div id="quote-display"></div>
-            <div id="dua-display"></div>
-        </section>
-    </main>
+    <!-- <section id="calendar" class="section">
+      <h2>Календарь исламских событий</h2>
+      <div id="calendar-display">Текущая дата: <span id="current-date"></span></div>
+    </section> -->
 
-    <footer>
-        <p>&copy; 2025 Мусульманский сайт. Все права защищены.</p>
-    </footer>
+    <section id="community" class="section">
+      <h2>Сообщество</h2>
+      <p>Присоединяйтесь к обсуждениям и делитесь полезными материалами с другими пользователями.</p>
+      <div class="btn-group">
+        <button onclick="joinCommunity()">Присоединиться к сообществу</button>
+      </div>
+      <div id="community-feedback"></div>
+    </section>
 
-    <script>
-        async function getPrayerTimes() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(async(position) => {
-                    const lat = position.coords.latitude;
-                    const lon = position.coords.longitude;
-                    const apiUrl = `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=2`;
-                    try {
-                        const response = await fetch(apiUrl);
-                        const data = await response.json();
-                        const timings = data.data.timings;
-                        const prayerTimesDisplay = document.getElementById('prayer-times-display');
-                        prayerTimesDisplay.innerHTML = `
+    <section id="profile" class="section">
+      <h2>Личный кабинет</h2>
+      <p>Настройка уведомлений и ведение дневника духовного роста.</p>
+      <div class="btn-group">
+        <button onclick="logDailyGratitude()">Записать благодарность</button>
+        <button onclick="getIslamicQuote()">Получить исламскую цитату</button>
+        <button onclick="getRandomDua()">Получить дуа</button>
+      </div>
+      <div id="gratitude-log"></div>
+      <div id="quote-display"></div>
+      <div id="dua-display"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Мусульманский сайт. Все права защищены.</p>
+  </footer>
+
+  <script>
+
+    function toggleLesson(id) {
+        const lesson = document.getElementById(id);
+        if (lesson.style.display === "block") {
+          lesson.style.display = "none";
+        } else {
+          lesson.style.display = "block";
+        }
+      }
+
+    async function getPrayerTimes() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (position) => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          const apiUrl = https//api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=2;
+          try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            const timings = data.data.timings;
+            const prayerTimesDisplay = document.getElementById('prayer-times-display');
+            prayerTimesDisplay.innerHTML = `
               <ul>
                 <li>Фаджр: ${timings.Fajr}</li>
                 <li>Зухр: ${timings.Dhuhr}</li>
@@ -215,63 +371,111 @@
                 <li>Иша: ${timings.Isha}</li>
               </ul>
             `;
-                    } catch (error) {
-                        alert('Ошибка при получении времени намаза. Пожалуйста, попробуйте снова.');
-                    }
-                }, () => {
-                    alert('Не удалось получить местоположение.');
-                });
-            } else {
-                alert('Геолокация не поддерживается вашим браузером.');
-            }
-        }
-
-        function joinCommunity() {
-            const feedback = document.getElementById('community-feedback');
-            feedback.innerHTML = '<p>Вы успешно присоединились к сообществу!</p>';
-        }
-
-        function logDailyGratitude() {
-            const gratitude = prompt('За что вы сегодня благодарны?');
-            const gratitudeLog = document.getElementById('gratitude-log');
-            if (gratitude) {
-                gratitudeLog.innerHTML += `<p>Сегодняшняя благодарность: ${gratitude}</p>`;
-            }
-        }
-
-        function getIslamicQuote() {
-            const quotes = [
-                "Аллах не возлагает на человека сверх его возможностей. — Коран 2:286",
-                "Будь терпеливым, ведь терпение — это ключ к успеху.",
-                "Всевышний Аллах любит тех, кто делает добро.",
-                "Поистине, с трудностями приходит облегчение. — Коран 94:6"
-            ];
-            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-            const quoteDisplay = document.getElementById('quote-display');
-            quoteDisplay.innerHTML = `<blockquote>${randomQuote}</blockquote>`;
-        }
-
-        function getRandomDua() {
-            const duas = [
-                "Робби зидни 'илма (О, Господи, увеличь моё знание)",
-                "Аллахумма ахсин 'акъибатана (О, Аллах, сделай наш конец благим)",
-                "Я Хаййу, я Каййум, бир-рахматика аста’гис (О Живой, О Вечный, прошу Твоей милости)",
-                "Аллахумма инни а'узу бика мина-ль-касаль (О, Аллах, защити меня от лени)"
-            ];
-            const randomDua = duas[Math.floor(Math.random() * duas.length)];
-            const duaDisplay = document.getElementById('dua-display');
-            duaDisplay.innerHTML = `<blockquote>${randomDua}</blockquote>`;
-        }
-
-        document.getElementById('theme-toggle').addEventListener('click', () => {
-            document.body.classList.toggle('dark-theme');
+          } catch (error) {
+            alert('Ошибка при получении времени намаза. Пожалуйста, попробуйте снова.');
+          }
+        }, () => {
+          alert('Не удалось получить местоположение.');
         });
+      } else {
+        alert('Геолокация не поддерживается вашим браузером.');
+      }
+    }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            const currentDate = new Date().toLocaleDateString('ru-RU');
-            document.getElementById('current-date').textContent = currentDate;
+    function joinCommunity() {
+      const feedback = document.getElementById('community-feedback');
+      feedback.innerHTML = '<p>Вы успешно присоединились к сообществу!</p>';
+    }
+
+    function logDailyGratitude() {
+      const gratitude = prompt('За что вы сегодня благодарны?');
+      const gratitudeLog = document.getElementById('gratitude-log');
+      if (gratitude) {
+        gratitudeLog.innerHTML += <p>Сегодняшняя благодарность: ${gratitude}</p>;
+      }
+    }
+
+    function getIslamicQuote() {
+      const quotes = [
+        "Аллах не возлагает на человека сверх его возможностей. — Коран 2:286",
+        "Будь терпеливым, ведь терпение — это ключ к успеху.",
+        "Всевышний Аллах любит тех, кто делает добро.",
+        "Поистине, с трудностями приходит облегчение. — Коран 94:6"
+      ];
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      const quoteDisplay = document.getElementById('quote-display');
+      quoteDisplay.innerHTML = <blockquote>${randomQuote}</blockquote>;
+    }
+
+    function getRandomDua() {
+      const duas = [
+
+"Робби зидни 'илма (О, Господи, увеличь моё знание)",
+        "Аллахумма ахсин 'акъибатана (О, Аллах, сделай наш конец благим)",
+        "Я Хаййу, я Каййум, бир-рахматика аста’гис (О Живой, О Вечный, прошу Твоей милости)",
+        "Аллахумма инни а'узу бика мина-ль-касаль (О, Аллах, защити меня от лени)"
+      ];
+      const randomDua = duas[Math.floor(Math.random() * duas.length)];
+      const duaDisplay = document.getElementById('dua-display');
+      duaDisplay.innerHTML = <blockquote>${randomDua}</blockquote>;
+    }
+
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+    });
+
+    // Голосовой поиск хадисов и дуа
+    function startVoiceSearch() {
+      if (!('webkitSpeechRecognition' in window)) {
+        alert('Ваш браузер не поддерживает голосовое распознавание');
+        return;
+      }
+      const recognition = new webkitSpeechRecognition();
+      recognition.lang = 'ru-RU';
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        alert(`Вы сказали: ${transcript}`);
+      };
+      recognition.start();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const currentDate = new Date().toLocaleDateString();
+        document.getElementById('current-date').textContent = currentDate;
+      
+        // Кнопка для голосового поиска хадисов и дуа
+        const voiceSearchButton = document.createElement('button');
+        voiceSearchButton.textContent = 'Голосовой поиск хадисов и дуа';
+        voiceSearchButton.style.marginTop = '20px';
+        document.querySelector('#resources').appendChild(voiceSearchButton);
+      
+        voiceSearchButton.addEventListener('click', startVoiceSearch);
+      
+        // Плавная прокрутка по клику на ссылки навигации
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+          link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const targetId = event.target.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+              targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
         });
+      
+        // Адаптация под мобильные устройства
+        const metaTag = document.createElement('meta');
+        metaTag.name = 'apple-mobile-web-app-capable';
+        metaTag.content = 'yes';
+        document.head.appendChild(metaTag);
+      
+        const addToHomeScreenIcon = document.createElement('link');
+        addToHomeScreenIcon.rel = 'apple-touch-icon';
+        addToHomeScreenIcon.href = 'path-to-icon.png'; // Укажите путь к вашей иконке
+        document.head.appendChild(addToHomeScreenIcon);
+      
+        alert('Вы можете добавить сайт на главный экран через настройки браузера.');
+      }); 
     </script>
 </body>
-
 </html>

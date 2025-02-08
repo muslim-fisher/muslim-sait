@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мусульманский сайт</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(to bottom, #f0f9ff, #cfe8ff);
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        header {
+            background-color: #008080;
+            padding: 1em 0;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #006666;
+            margin: 0;
+        }
+        
+        .nav-menu li {
+            margin: 0 15px;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            display: block;
+            border-radius: 5px;
+        }
+        
+        .nav-menu a:hover {
+            background-color: #009999;
+        }
+        
+        main {
+            padding: 2em;
+            text-align: center;
+            flex-grow: 1;
+        }
+        
+        .section {
+            margin: 2em 0;
+            padding: 2em;
+            background-color: #f0f4f8;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        button {
+            background-color: #00796b;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #004d40;
+        }
+        
+        footer {
+            background-color: #008080;
+            color: white;
+            text-align: center;
+            padding: 1.5em 0;
+            margin-top: 2em;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        #theme-toggle {
+            margin-top: 20px;
+        }
+        
+        .dark-theme {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#resources">Духовные ресурсы</a></li>
+                <li><a href="#prayer-times">Время намаза</a></li>
+                <li><a href="#calendar">Календарь событий</a></li>
+                <li><a href="#community">Сообщество</a></li>
+                <li><a href="#profile">Личный кабинет</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="section">
+            <h1>Добро пожаловать на мусульманский сайт!</h1>
+            <p>Здесь вы найдете ресурсы для духовного развития и общения с единомышленниками.</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Great_Mosque_of_Mecca.jpg/800px-Great_Mosque_of_Mecca.jpg" alt="Кааба в Мекке">
+            <button id="theme-toggle">Переключить тему</button>
+        </section>
+
+        <section id="resources" class="section">
+            <h2>Духовные ресурсы</h2>
+            <ul>
+                <li>Онлайн Коран с переводами и аудио</li>
+                <li>Тафсир и хадисы</li>
+                <li>Статьи о намазе и других столпах ислама</li>
+            </ul>
+        </section>
+
+        <section id="prayer-times" class="section">
+            <h2>Время намаза</h2>
+            <p>Автоматическое определение времени намаза по вашему местоположению.</p>
+            <div class="btn-group">
+                <button onclick="getPrayerTimes()">Обновить время намаза</button>
+            </div>
+            <div id="prayer-times-display"></div>
+        </section>
+
+        <section id="calendar" class="section">
+            <h2>Календарь исламских событий</h2>
+            <div id="calendar-display">Текущая дата: <span id="current-date"></span></div>
+        </section>
+
+        <section id="community" class="section">
+            <h2>Сообщество</h2>
+            <p>Присоединяйтесь к обсуждениям и делитесь полезными материалами с другими пользователями.</p>
+            <div class="btn-group">
+                <button onclick="joinCommunity()">Присоединиться к сообществу</button>
+            </div>
+            <div id="community-feedback"></div>
+        </section>
+
+        <section id="profile" class="section">
+            <h2>Личный кабинет</h2>
+            <p>Настройка уведомлений и ведение дневника духовного роста.</p>
+            <div class="btn-group">
+                <button onclick="logDailyGratitude()">Записать благодарность</button>
+                <button onclick="getIslamicQuote()">Получить исламскую цитату</button>
+                <button onclick="getRandomDua()">Получить дуа</button>
+            </div>
+            <div id="gratitude-log"></div>
+            <div id="quote-display"></div>
+            <div id="dua-display"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Мусульманский сайт. Все права защищены.</p>
+    </footer>
+
+    <script>
+        async function getPrayerTimes() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(async(position) => {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    const apiUrl = `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=2`;
+                    try {
+                        const response = await fetch(apiUrl);
+                        const data = await response.json();
+                        const timings = data.data.timings;
+                        const prayerTimesDisplay = document.getElementById('prayer-times-display');
+                        prayerTimesDisplay.innerHTML = `
+              <ul>
+                <li>Фаджр: ${timings.Fajr}</li>
+                <li>Зухр: ${timings.Dhuhr}</li>
+                <li>Аср: ${timings.Asr}</li>
+                <li>Магриб: ${timings.Maghrib}</li>
+                <li>Иша: ${timings.Isha}</li>
+              </ul>
+            `;
+                    } catch (error) {
+                        alert('Ошибка при получении времени намаза. Пожалуйста, попробуйте снова.');
+                    }
+                }, () => {
+                    alert('Не удалось получить местоположение.');
+                });
+            } else {
+                alert('Геолокация не поддерживается вашим браузером.');
+            }
+        }
+
+        function joinCommunity() {
+            const feedback = document.getElementById('community-feedback');
+            feedback.innerHTML = '<p>Вы успешно присоединились к сообществу!</p>';
+        }
+
+        function logDailyGratitude() {
+            const gratitude = prompt('За что вы сегодня благодарны?');
+            const gratitudeLog = document.getElementById('gratitude-log');
+            if (gratitude) {
+                gratitudeLog.innerHTML += `<p>Сегодняшняя благодарность: ${gratitude}</p>`;
+            }
+        }
+
+        function getIslamicQuote() {
+            const quotes = [
+                "Аллах не возлагает на человека сверх его возможностей. — Коран 2:286",
+                "Будь терпеливым, ведь терпение — это ключ к успеху.",
+                "Всевышний Аллах любит тех, кто делает добро.",
+                "Поистине, с трудностями приходит облегчение. — Коран 94:6"
+            ];
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            const quoteDisplay = document.getElementById('quote-display');
+            quoteDisplay.innerHTML = `<blockquote>${randomQuote}</blockquote>`;
+        }
+
+        function getRandomDua() {
+            const duas = [
+                "Робби зидни 'илма (О, Господи, увеличь моё знание)",
+                "Аллахумма ахсин 'акъибатана (О, Аллах, сделай наш конец благим)",
+                "Я Хаййу, я Каййум, бир-рахматика аста’гис (О Живой, О Вечный, прошу Твоей милости)",
+                "Аллахумма инни а'узу бика мина-ль-касаль (О, Аллах, защити меня от лени)"
+            ];
+            const randomDua = duas[Math.floor(Math.random() * duas.length)];
+            const duaDisplay = document.getElementById('dua-display');
+            duaDisplay.innerHTML = `<blockquote>${randomDua}</blockquote>`;
+        }
+
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const currentDate = new Date().toLocaleDateString('ru-RU');
+            document.getElementById('current-date').textContent = currentDate;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Руководство по Намазу и Исламские Новости</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #34495e;
+            padding: 12px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #2c3e50;
+        }
+        
+        .news-section {
+            margin-top: 30px;
+        }
+        
+        .namaz-step {
+            background: #e9f5f9;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        button {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background-color: #219150;
+        }
+        
+        .step-number {
+            background-color: #2c3e50;
+            color: white;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .news-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script>
+        async function fetchIslamicNews() {
+            const apiUrl = "https://api.example.com/islamic-news"; // Замените на реальный API
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                const newsContainer = document.getElementById('news-container');
+                newsContainer.innerHTML = data.articles.map(article => `
+                    <div class="news-item">
+                        <h3>${article.title}</h3>
+                        <p>${article.description}</p>
+                        <a href="${article.url}" target="_blank">Читать далее</a>
+                    </div>
+                `).join('');
+            } catch (error) {
+                document.getElementById('news-container').innerText = 'Не удалось загрузить новости.';
+            }
+        }
+
+        function enablePrayerNotifications() {
+            if ("Notification" in window) {
+                Notification.requestPermission().then(permission => {
+                    if (permission === "granted") {
+                        alert("Уведомления о времени намаза включены!");
+                    }
+                });
+            } else {
+                alert("Этот браузер не поддерживает уведомления.");
+            }
+        }
+
+        function playAdhan() {
+            const adhanAudio = new Audio('https://www.example.com/adhan.mp3'); // Замените на актуальную ссылку на аудио
+            adhanAudio.play();
+        }
+
+        function showCurrentTime() {
+            const timeElement = document.getElementById('current-time');
+            setInterval(() => {
+                const now = new Date();
+                timeElement.textContent = now.toLocaleString('ru-RU', {
+                    dateStyle: 'full',
+                    timeStyle: 'medium'
+                });
+            }, 1000);
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        function generateRandomHadith() {
+            const hadiths = [
+                "Дела оцениваются по намерениям.",
+                "Лучший из вас тот, кто учится Корану и обучает ему.",
+                "Не злитесь, и для вас будет благо."
+            ];
+            const randomHadith = hadiths[Math.floor(Math.random() * hadiths.length)];
+            document.getElementById('random-hadith').textContent = randomHadith;
+        }
+
+        function startPrayerCountdown() {
+            const countdownElement = document.getElementById('prayer-countdown');
+            const nextPrayerTime = new Date();
+            nextPrayerTime.setHours(18, 0, 0);
+
+            setInterval(() => {
+                const now = new Date();
+                const timeLeft = nextPrayerTime - now;
+                if (timeLeft > 0) {
+                    const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                    countdownElement.textContent = `${hours}ч ${minutes}м ${seconds}с`;
+                } else {
+                    countdownElement.textContent = "Время следующего намаза!";
+                }
+            }, 1000);
+        }
+
+        function updateWeather() {
+            document.getElementById('weather-info').textContent = "Погода: Ясно, 25°C";
+        }
+
+        function searchAyah() {
+            const keyword = document.getElementById('ayah-search').value;
+            alert(`Поиск аятов по ключевому слову: ${keyword}`);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showCurrentTime();
+            startPrayerCountdown();
+            updateWeather();
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Руководство по Намазу и Исламские Новости</h1>
+    </header>
+
+    <nav>
+        <a href="#guide">Руководство по Намазу</a>
+        <a href="#news">Исламские Новости</a>
+        <a href="#notifications">Уведомления</a>
+        <a href="#audio">Аудио Азан и Коран</a>
+    </nav>
+
+    <div class="container" id="guide">
+        <h2>Пошаговое руководство по Намазу</h2>
+        <div class="namaz-step">
+            <span class="step-number">1</span>
+            <strong>Ният (Намерение)</strong>
+            <p>Сформируйте намерение совершить намаз искренне ради Аллаха.</p>
+        </div>
+        <div class="namaz-step">
+            <span class="step-number">2</span>
+            <strong>Такбир</strong>
+            <p>Поднимите руки и произнесите "Аллаху Акбар", чтобы начать молитву.</p>
+        </div>
+        <div class="namaz-step">
+            <span class="step-number">3</span>
+            <strong>Кыям (Стояние)</strong>
+            <p>Прочитайте Суру Аль-Фатиха и другую Суру из Корана.</p>
+        </div>
+        <div class="namaz-step">
+            <span class="step-number">4</span>
+            <strong>Руку (Наклон)</strong>
+            <p>Сделайте наклон и скажите "Субхана Раббияль Азим" три раза.</p>
+        </div>
+        <div class="namaz-step">
+            <span class="step-number">5</span>
+            <strong>Суджуд (Земной поклон)</strong>
+            <p>Опуститесь на колени и скажите "Субхана Раббияль Аъля" три раза.</p>
+        </div>
+        <div class="namaz-step">
+            <span class="step-number">6</span>
+            <strong>Къада (Сидение)</strong>
+            <p>Сядьте на колени и произнесите ташахуд.</p>
+        </div>
+    </div>
+
+    <div class="container news-section" id="news">
+        <h2>Исламские Новости</h2>
+        <button onclick="fetchIslamicNews()">Загрузить Новости</button>
+        <div id="news-container"></div>
+    </div>
+
+    <div class="container" id="notifications">
+        <h2>Уведомления о времени намаза</h2>
+        <button onclick="enablePrayerNotifications()">Включить уведомления</button>
+    </div>
+
+    <div class="container" id="audio">
+        <h2>Аудио Азан и Коран</h2>
+        <button onclick="playAdhan()">Воспроизвести Азан</button>
+    </div>
+
+    <div class="container">
+        <h2>Текущее время</h2>
+        <div id="current-time"></div>
+    </div>
+
+    <div class="container">
+        <h2>Случайный Хадис</h2>
+        <button onclick="generateRandomHadith()">Показать Хадис</button>
+        <p id="random-hadith"></p>
+    </div>
+
+    <div class="container">
+        <h2>Обратный отсчёт до следующего намаза</h2>
+        <div id="prayer-countdown"></div>
+    </div>
+
+
+</html>
